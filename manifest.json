@@ -2,12 +2,11 @@
     "manifest_version": 2,
     "name": "DogeConvert",
     "version": "1.0.0",
-    "default_locale": "en",
     "description": "Convert any currencies in DOGE (Currently support Amazon only)",
     "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "16": "images/dogecoin-300.png",
+        "48": "images/dogecoin-300.png",
+        "128": "images/dogecoin-300.png"
     },
     "page_action": {
         "default_icon": {
@@ -15,15 +14,16 @@
             "24": "images/dogecoin-300.png",
             "32": "images/dogecoin-300.png"
         },
-        "default_title": "Google Mail",
+        "default_title": "Doge Converter",
         "default_popup": "popup.html"
     },
     "content_scripts": [{
+        "matches": ["*://*/*"],
+        "include_globs": [
+            "*://*.amazon.*/*"
+        ],
         "js": [
             "content.js"
-        ],
-        "matches": [
-            "https://*.amazon.*"
         ]
     }],
     "permissions": [
