@@ -3,6 +3,10 @@
     "name": "DogeConvert",
     "version": "1.0.0",
     "description": "Convert any currencies in DOGE (Currently support Amazon only)",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
     "icons": {
         "16": "images/dogecoin-300.png",
         "48": "images/dogecoin-300.png",
@@ -27,6 +31,8 @@
         ]
     }],
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "declarativeContent",
+        "tabs"
     ]
 }
