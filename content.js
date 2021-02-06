@@ -3,8 +3,6 @@ chrome.runtime.sendMessage({
     subject: 'showPageAction',
 });
 
-
-
 function getCurrencySymbol() {
     var currencySymbol = document.getElementsByClassName('a-price-symbol')[0].innerText
     currencySymbol = currencySymbol.replace('$', '');
@@ -62,15 +60,17 @@ async function main() {
     return "Succesfully converted :)";
 }
 
-async function execute(msg, sender, response) {
-    if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
-        var result = await main();
-        var info = {
-            resultMessage: result
-        };
-        console.log("envoie des infos");
-        response(info);
-    }
+async function execute() {
+    var result = await main();
+    chrome.runtime.onMessage.addListener((msg, sender, response) => {
+        if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
+            var info = {
+                resultMessage: result
+            };
+            console.log("envoie des infos");
+            response(info);
+        }
+    });
 }
 
-chrome.runtime.onMessage.addListener(execute);
+execute();
