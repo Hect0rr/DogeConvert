@@ -1,5 +1,4 @@
 const setDOMInfo = result => {
-    console.log(result);
     document.getElementById('result').innerText = result.resultMessage;
 };
 
